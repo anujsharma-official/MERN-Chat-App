@@ -5,7 +5,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import { useAuth } from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
-import Logout from "./home/left1/Logout";
+
 
 import { Navigate, Route, Routes } from "react-router-dom";
 function App() {
@@ -19,7 +19,7 @@ function App() {
           element={
             authUser ? (
               <div className="flex h-screen">
-                <Logout />
+             
                 <Left />
                 <Right />
               </div>

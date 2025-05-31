@@ -11,35 +11,44 @@ function Chatuser() {
     return onlineUsers.includes(userId) ? "Online" : "Offline";
   };
 
-  // Email ke pehle 2 capital letters nikaalne
   const dpInitials = selectedConversation?.email?.slice(0, 2)?.toUpperCase();
 
   return (
-    <div className="pl-5 pt-5 h-[12vh] flex items-center space-x-4 bg-gray-700 hover:bg-gray-600 duration-300">
-      <div className="relative">
-        {/* Avatar with initials */}
+    <div className="pl-4 pr-2 py-3 flex items-center bg-gray-700 hover:bg-gray-600 duration-300 w-full">
+      {/* Hamburger for small screens */}
+     
+
+      {/* Profile Avatar */}
+      <div className="relative flex-shrink-0">
         <div
-          className={`w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg ${
-            getOnlineUsersStatus(selectedConversation._id) === "Online"
+          className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white font-bold text-lg ${
+            getOnlineUsersStatus(selectedConversation?._id) === "Online"
               ? "bg-green-600"
               : "bg-gray-500"
           }`}
         >
           {dpInitials || "NA"}
         </div>
-        
-        {/* Online status indicator - similar to old code */}
-        <div className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-gray-700 ${
-          getOnlineUsersStatus(selectedConversation._id) === "Online" 
-            ? "bg-green-500" 
-            : "bg-gray-400"
-        }`}></div>
+
+        <div
+          className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-gray-700 ${
+            getOnlineUsersStatus(selectedConversation?._id) === "Online"
+              ? "bg-green-500"
+              : "bg-gray-400"
+          }`}
+        ></div>
       </div>
-      <div>
-        <h1 className="text-xl font-semibold">{selectedConversation?.name}</h1>
-        <p className="text-sm text-gray-300">{selectedConversation?.fullname}</p>
+
+      {/* User Info */}
+      <div className="ml-3 flex flex-col overflow-hidden">
+        <h1 className="text-base sm:text-lg font-semibold truncate">
+          {selectedConversation?.name}
+        </h1>
+        <p className="text-sm text-gray-300 truncate">
+          {selectedConversation?.fullname}
+        </p>
         <span className="text-sm text-white/70">
-          {getOnlineUsersStatus(selectedConversation._id)}
+          {getOnlineUsersStatus(selectedConversation?._id)}
         </span>
       </div>
     </div>

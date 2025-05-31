@@ -7,26 +7,29 @@ function Typesend() {
   const { loading, sendMessages } = useSendMessage();
 
   const handleSubmit = async (e) => {
-    console.log(e);
     e.preventDefault();
+    if (!message.trim()) return; // empty message block
     await sendMessages(message);
     setMessage("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="flex space-x-1 h-[8vh]  bg-gray-800">
-        <div className=" w-[70%] mx-4">
-          <input
-            type="text"
-            placeholder="Type here"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className="border-[1px] border-gray-700  flex items-center w-full py-3 px-3 rounded-xl grow outline-none bg-slate-900 mt-1"
-          />
-        </div>
-        <button>
-          <IoSend className="text-3xl" />
+    <form onSubmit={handleSubmit} className="bg-gray-800 px-2 py-2">
+      <div className="flex items-center gap-2">
+        <input
+          type="text"
+          placeholder="Type here..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          disabled={loading}
+          className="flex-1 py-2 px-4 rounded-xl bg-slate-900 text-white placeholder-gray-400 outline-none border border-gray-700 focus:border-blue-500"
+        />
+        <button
+          type="submit"
+          disabled={loading || !message.trim()}
+          className="p-2 rounded-full bg-blue-600 hover:bg-blue-700 transition disabled:opacity-50"
+        >
+          <IoSend className="text-white text-2xl" />
         </button>
       </div>
     </form>
