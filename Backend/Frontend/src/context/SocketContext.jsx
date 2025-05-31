@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://livelink-chat-app.onrender.com", {
+      const socket = io("https://mern-chat-app-66aw.onrender.com", {
         query: {
           userId: authUser.user._id,
         },

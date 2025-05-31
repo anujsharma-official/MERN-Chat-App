@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://livelink-chat-app.onrender.com",
+    origin: "https://mern-chat-app-66aw.onrender.com",
     methods: ["GET", "POST"],
   },
 });
