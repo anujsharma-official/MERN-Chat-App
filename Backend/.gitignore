@@ -1,0 +1,5 @@
+# Node modules folder ko ignore karo
+node_modules/
+
+# Environment variables file ko ignore karo
+.env
